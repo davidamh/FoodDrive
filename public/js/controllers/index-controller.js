@@ -1,5 +1,7 @@
-angular.module('food-drive').controller('IndexController', ['$scope', 'Global', function ($scope, Global) {
+angular.module('food-drive').controller('IndexController', ['$scope', 'Global', 'Restangular', function ($scope, Global, Restangular) {
     $scope.global = Global;
+    
+    var Foods = Restangular.all('food');
     
     $scope.center = {
         latitude: 36.000041,
@@ -17,6 +19,8 @@ angular.module('food-drive').controller('IndexController', ['$scope', 'Global', 
             $('#locationInput').val('Please select a location.');
         }
         else {
+        
+            //TODO check that start and end times are valid times.
             var food = {
                 name: this.name,
                 latitude: $scope.latitude,
@@ -25,6 +29,11 @@ angular.module('food-drive').controller('IndexController', ['$scope', 'Global', 
                 end_time: this.endTime,
                 food_types: this.foods.split(' ')
             };
+            
+            Foods.post(food)
+                .then(function(response) {
+                    console.log("OK!");
+                });
             
             console.log(food);
         }
