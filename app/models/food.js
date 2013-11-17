@@ -15,17 +15,13 @@ var FoodSchema = new Schema({
         default: '',
         trim: true
     },
-    location: {
-        address: {
-            type: String,
-            default: '',
-            trim: true
-        },
-        geo: {
-            type: [Number],
-            index: '2d',
-            default: []
-        }
+    latitude: {
+        type: Number,
+        default: 0
+    },
+    longitude: {
+        type: Number,
+        default: 0
     },
     start_time: {
         type: Date,

@@ -2,16 +2,70 @@
 	<div class="row">
 	    <div class="col-md-8">
 	        <h1 class="title">Where's the Food?</h1>
-	        <div ng-include="'views/map.html'"></div>
+                <google-map
+                    class="angular-google-map"
+                    center="center"
+                    markers="markers"
+                    latitude="latitude"
+                    longitude="longitude"
+                    draggable="true"
+                    zoom="zoom"
+                    mark-click="true"></google-map>
 	    </div>
 	    <div class="col-md-4 main-content">
 	        <div class="panel panel-success">
 	            <div class="panel-heading">
 	                <h3 class="title">Submit a Food</h3>
 	            </div>
-	            <div class="panel-body">
-	                <div ng-include="'views/foodform.html'"></div>
-	            </div>
+	            <form class="form-horizontal ng-pristine ng-valid" role="form" data-ng-submit="create()">
+	                <div class="panel-body">
+	                    <div class="form-group">
+                            <label class="control-label col-md-3" for="name">
+                                Name of Event
+                            </label>
+                            <div class="col-md-8 col-md-offset-1">
+                                <input type="text" class="form-control" required="" value="" placeholder="Name of Event" ng-model="name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="location">
+                                Location
+                            </label>
+                            <div class="col-md-8 col-md-offset-1">
+                                <input type="text" class="form-control" required="" value="" placeholder="Click on Map" disabled="" id="locationInput" ng-model="location">
+                            </div>
+                        </div>            
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="startTime">
+                                Start Time
+                            </label>
+                            <div class="col-md-8 col-md-offset-1">
+                                <input type="time" class="form-control" required="" value="" placeholder="Start Time" ng-model="startTime">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="endTime">
+                                End Time
+                            </label>
+                            <div class="col-md-8 col-md-offset-1">
+                                <input type="time" class="form-control" required="" value="" placeholder="End Time" ng-model="endTime">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="foods">
+                                What Foods?
+                            </label>
+                            <div class="col-md-8 col-md-offset-1">
+                                <input type="text" class="form-control" required="" ng-model="foods">
+                            </div>
+                        </div>
+	                </div>
+	                <div class="panel-footer">
+	                    <button class="btn btn-success btn-lg btn-block" type="submit">
+	                        I Found Food!
+	                    </button>
+	                </div>
+	            </form>
 	        </div>
 	    </div>
 	</div>
