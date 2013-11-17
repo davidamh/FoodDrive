@@ -19,6 +19,12 @@
     padding-bottom: 50px;
 }
 
+.angular-google-map {
+    display: block;
+    height: 500px;
+    width: 100%;
+}
+
 footer {
     position:fixed;
     left:0px;
