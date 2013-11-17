@@ -1,4 +1,4 @@
-angular.module('mean.system').factory("Global", [function() {
+angular.module('food-drive').factory("Global", [function() {
     var _this = this;
     _this._data = {
         user: window.user,
