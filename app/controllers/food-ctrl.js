@@ -28,7 +28,6 @@ exports.food = function(req, res, next, id) {
  */
 exports.create = function(req, res) {
     'use strict';
-    console.log('datass');
     var food = new Food(req.body);
     food.user = req.user;
 
