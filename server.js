@@ -38,8 +38,6 @@ var walk = function(path) {
 };
 walk(models_path);
 
-//bootstrap passport config
-require('./config/passport')(passport);
 
 var app = express();
 

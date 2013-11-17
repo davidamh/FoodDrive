@@ -3,7 +3,7 @@
  */
 var mongoose = require('mongoose'),
     food = mongoose.model('Food'),
-    _ = require('underscore');
+    _ = require('lodash');
 
 
 /**

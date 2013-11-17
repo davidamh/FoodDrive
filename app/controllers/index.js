@@ -2,7 +2,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    _ = require('underscore');
+    _ = require('lodash');
 
 
 exports.render = function(req, res) {

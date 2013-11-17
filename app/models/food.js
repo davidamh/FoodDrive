@@ -47,15 +47,12 @@ var FoodSchema = new Schema({
 FoodSchema.path('name').validate(function(name) {
     return name.length;
 }, 'Event name cannot be blank.');
-FoodSchema.path('location').validate(function(location) {
-    return location.address.length;
-}, 'Address cannot be blank.');
 
 /**
  * Statics
  */
 FoodSchema.statics = {
-    findByTime = function(cb) {
+    findByTime: function(cb) {
         this.find({end_time: {"$gte": Date.now}}, cb);
     }
 };
