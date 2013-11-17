@@ -15,12 +15,27 @@ angular.module('food-drive').controller('IndexController', ['$scope', 'Global', 
     $scope.longitude = null;
     
     $scope.create = function() {
+    
+        $scope.locError = false;
+        $scope.startTimeError = false;
+        $scope.endTimeError = false;
+    
         if($scope.latitude === null || $scope.longitude === null) {
+            $scope.locError = true;
             $('#locationInput').val('Please select a location.');
         }
-        else {
         
-            //TODO check that start and end times are valid times.
+        if(isNaN(Date.parse(this.startTime))) {
+            $scope.startTimeError = true;
+            $('#startTimeInput').val('Please enter a valid time.');
+        }
+        
+        if(isNaN(Date.parse(this.endTime))) {
+            $scope.endTimeError = true;
+        }
+            $('#endTimeInput').val('Please enter a valid time.');
+        
+        if(!($scope.locError || $scope.startTimeError || $scope.endTimeError)) {
             var food = {
                 name: this.name,
                 latitude: $scope.latitude,
@@ -32,7 +47,7 @@ angular.module('food-drive').controller('IndexController', ['$scope', 'Global', 
             
             Foods.post(food)
                 .then(function(response) {
-                    console.log("OK!");
+                    // TODO do stuff
                 });
             
             console.log(food);

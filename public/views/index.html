@@ -27,28 +27,29 @@
                                 <input type="text" class="form-control" required="" value="" placeholder="Name of Event" ng-model="name">
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" ng-class="{'has-error': locError}">
                             <label class="control-label col-md-3" for="location">
                                 Location
                             </label>
                             <div class="col-md-8 col-md-offset-1">
                                 <input type="text" class="form-control" required="" value="" placeholder="Click on Map" disabled="" id="locationInput" ng-model="location">
                             </div>
-                        </div>            
-                        <div class="form-group">
+                        </div>
+                        <!-- TODO Make these into time pickers -->            
+                        <div class="form-group" ng-class="{'has-error': startTimeError}">
                             <label class="control-label col-md-3" for="startTime">
                                 Start Time
                             </label>
                             <div class="col-md-8 col-md-offset-1">
-                                <input type="time" class="form-control" required="" value="" placeholder="Start Time" ng-model="startTime">
+                                <input type="time" class="form-control" required="" value="" placeholder="Start Time" id="startTimeInput" ng-model="startTime">
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" ng-class="{'has-error': endTimeError}">
                             <label class="control-label col-md-3" for="endTime">
                                 End Time
                             </label>
                             <div class="col-md-8 col-md-offset-1">
-                                <input type="time" class="form-control" required="" value="" placeholder="End Time" ng-model="endTime">
+                                <input type="time" class="form-control" required="" value="" placeholder="End Time" id="endTimeInput" ng-model="endTime">
                             </div>
                         </div>
                         <div class="form-group">

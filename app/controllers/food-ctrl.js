@@ -2,7 +2,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    food = mongoose.model('Food'),
+    Food = mongoose.model('Food'),
     _ = require('lodash');
 
 
@@ -28,6 +28,7 @@ exports.food = function(req, res, next, id) {
  */
 exports.create = function(req, res) {
     'use strict';
+    console.log('datass');
     var food = new Food(req.body);
     food.user = req.user;
 

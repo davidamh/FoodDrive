@@ -1,1 +1,1 @@
-window.app = angular.module('food-drive', ['ngRoute', 'google-maps']);
+window.app = angular.module('food-drive', ['ngRoute', 'google-maps', 'restangular']);
