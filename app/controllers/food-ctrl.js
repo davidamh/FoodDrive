@@ -65,7 +65,7 @@ exports.destroy = function(req, res) {
     'use strict';
     var food = req.food;
 
-    food.remove(function(err) {
+    Food.remove(function(err) {
         if (err) {
             res.render('error', {
                 status: 500
@@ -87,7 +87,7 @@ exports.show = function(req, res) {
  * List of foods
  */
 exports.all = function(req, res) {
-    food.find().sort({date: -1}).exec(function(err, foods) {
+    Food.find({end_time: {$gte: Date.now()}}).exec(function(err, foods) {
         if (err) {
             res.render('error', {
                 status: 500

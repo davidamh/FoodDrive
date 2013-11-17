@@ -1,7 +1,24 @@
-angular.module('food-drive').controller('IndexController', ['$scope', 'Global', 'Restangular', function ($scope, Global, Restangular) {
+angular.module('food-drive').controller('IndexController', ['$scope', '$route', 'Global', 'Restangular', function ($scope, $route, Global, Restangular) {
     $scope.global = Global;
     
+    $scope.markers = [];
+    
     var Foods = Restangular.all('food');
+    
+    var getMarkers = function() {
+        Foods.getList().then(function(foods) {
+            $scope.markers = _.map(foods, function(food) {
+                return {
+                    latitude: parseFloat(food.latitude),
+                    longitude: parseFloat(food.longitude)
+                };
+            });
+        }, function(error) {
+            console.log('Butts');
+        });
+    };
+    
+    getMarkers();
     
     $scope.center = {
         latitude: 36.000041,
@@ -10,7 +27,6 @@ angular.module('food-drive').controller('IndexController', ['$scope', 'Global', 
     $scope.zoom = 15;
     $scope.fit = true;
     
-    $scope.markers = [];
     $scope.latitude = null;
     $scope.longitude = null;
     
@@ -47,10 +63,8 @@ angular.module('food-drive').controller('IndexController', ['$scope', 'Global', 
             
             Foods.post(food)
                 .then(function(response) {
-                    // TODO do stuff
+                    $route.reload();
                 });
-            
-            console.log(food);
         }
     };
 }]);
